@@ -4,7 +4,6 @@ import { AuthProvider } from './context/AuthContext'
 import { SubscriptionProvider } from './context/SubscriptionContext'
 import { useAuth } from './context/AuthContext'
 
-import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
@@ -12,6 +11,7 @@ import Pricing from './pages/Pricing'
 import Admin from './pages/Admin'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import Home from './pages/Home/Home'
 
 function ProtectedRoute({ children }) {
   const { currentUser } = useAuth()
