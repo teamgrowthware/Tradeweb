@@ -12,6 +12,8 @@ import Pricing from './pages/Pricing'
 import Admin from './pages/Admin'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import TermsAndConditions from './pages/TermsandCondition'
+import PrivacyPolicy from './pages/privacyandpolicy'
 
 function ProtectedRoute({ children }) {
   const { currentUser } = useAuth()
@@ -36,6 +38,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="/termandcondition" element={<TermsAndConditions/>}/>
+              <Route path = "/privacyandpolicy" element={<PrivacyPolicy/>}/>
               <Route 
                 path="/dashboard" 
                 element={
