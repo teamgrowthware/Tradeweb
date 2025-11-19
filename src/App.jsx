@@ -12,6 +12,9 @@ import Admin from './pages/Admin'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home/Home'
+import PrivacyPolicy from './pages/Privacyandpolicy'
+import TermsAndConditions from './pages/TermsandCondition'
+import MainChartAnalysis from './pages/ChartAnalyis/MainChartAnalysis'
 
 function ProtectedRoute({ children }) {
   const { currentUser } = useAuth()
@@ -31,7 +34,6 @@ function App() {
       <SubscriptionProvider>
         <Router>
           <div className="min-h-screen bg-dark-900">
-            <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
@@ -47,6 +49,7 @@ function App() {
                 } 
               />
               <Route path="/pricing" element={<Pricing />} />
+                 <Route path="/chartAnalyis" element={<MainChartAnalysis />} />
               <Route 
                 path="/admin" 
                 element={
@@ -56,7 +59,7 @@ function App() {
                 } 
               />
             </Routes>
-            <Footer />
+         
             <Toaster 
               position="top-right"
               toastOptions={{
