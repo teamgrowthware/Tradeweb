@@ -12,6 +12,8 @@ import Admin from './pages/Admin'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home/Home'
+import TermsAndConditions from './pages/TermsandCondition'
+import PrivacyPolicy from './pages/privacyandpolicy'
 
 function ProtectedRoute({ children }) {
   const { currentUser } = useAuth()
@@ -41,9 +43,9 @@ function App() {
               <Route 
                 path="/dashboard" 
                 element={
-                  <ProtectedRoute>
+              
                     <Dashboard />
-                  </ProtectedRoute>
+                 
                 } 
               />
               <Route path="/pricing" element={<Pricing />} />
