@@ -1,14 +1,6 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { useAuth } from '../context/AuthContext'
-import { useSubscription } from '../context/SubscriptionContext'
-import { FiCheck, FiZap, FiStar } from 'react-icons/fi'
-import { useNavigate } from 'react-router-dom'
-import toast from 'react-hot-toast'
-import StripePayment from '../components/payments/StripePayment'
-import RazorpayPayment from '../components/payments/RazorpayPayment'
-import CryptoPayment from '../components/payments/CryptoPayment'
-
+import { Check, Zap, Star, X } from 'lucide-react'
+ 
 const plans = [
   {
     id: 'starter',
@@ -88,263 +80,303 @@ const plans = [
     badge: 'Lifetime'
   }
 ]
-
+ 
 const tokenCosts = [
   { type: 'Basic Candlestick', tokens: 2 },
   { type: 'SMC / ICT / Pattern / Indicator', tokens: 5 }
 ]
-
-export default function Pricing() {
-  const { currentUser } = useAuth()
-  const { subscription } = useSubscription()
+ 
+export default function ModernPricing() {
   const [selectedPlan, setSelectedPlan] = useState(null)
   const [paymentMethod, setPaymentMethod] = useState(null)
   const [showTrial, setShowTrial] = useState(true)
-  const navigate = useNavigate()
-
+ 
   const handleSelectPlan = (plan) => {
-    if (!currentUser) {
-      toast.error('Please login to subscribe')
-      navigate('/login')
-      return
-    }
     setSelectedPlan(plan)
     setPaymentMethod(null)
   }
-
+ 
   const handlePaymentSuccess = () => {
-    toast.success('Subscription activated successfully!')
     setSelectedPlan(null)
     setPaymentMethod(null)
-    navigate('/dashboard')
   }
-
+ 
   return (
-    <div className="min-h-screen pt-20 pb-20 px-4">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Choose Your <span className="gradient-text">Trading Pack</span>
-          </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Select the perfect plan for your trading needs. All plans include monthly subscription with 7-day free trial.
-          </p>
-        </motion.div>
-
-        {/* Trial Toggle */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex justify-center mb-8"
-        >
-          <div className="glass-effect rounded-lg p-1 inline-flex">
-            <button
-              onClick={() => setShowTrial(true)}
-              className={`px-6 py-2 rounded-lg transition-all ${
-                showTrial
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-600'
-                  : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              With 7-Day Trial
-            </button>
-            <button
-              onClick={() => setShowTrial(false)}
-              className={`px-6 py-2 rounded-lg transition-all ${
-                !showTrial
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-600'
-                  : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              No Trial
-            </button>
+    <div className="min-h-screen bg-black text-white">
+      {/* Subtle Grid Pattern */}
+      <div className="fixed inset-0 opacity-[0.02]" style={{
+        backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+        backgroundSize: '50px 50px'
+      }}></div>
+ 
+      <div className="relative pt-20 pb-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16 animate-fade-in">
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 mb-6">
+              <Zap className="text-white w-4 h-4" />
+              <span className="text-sm font-medium text-gray-400">Subscription Plans</span>
+            </div>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
+              Choose Your Trading Pack
+            </h1>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+              Select the perfect plan for your trading needs. All plans include monthly subscription with 7-day free trial.
+            </p>
           </div>
-        </motion.div>
-
-        {/* Plans Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {plans.map((plan, idx) => (
-            <motion.div
-              key={plan.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
-              className={`glass-effect rounded-2xl p-6 relative ${
-                plan.popular ? 'ring-2 ring-blue-500' : ''
-              }`}
-            >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-1 rounded-full text-sm font-semibold">
-                    {plan.badge}
-                  </span>
-                </div>
-              )}
-              {plan.badge && !plan.popular && (
-                <div className="absolute -top-4 right-4">
-                  <span className="bg-gradient-to-r from-yellow-500 to-orange-500 px-3 py-1 rounded-full text-xs font-semibold">
-                    {plan.badge}
-                  </span>
-                </div>
-              )}
-
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                <div className="mb-4">
-                  <span className="text-4xl font-bold">{plan.currency}{plan.price}</span>
-                  <span className="text-gray-400">/month</span>
-                </div>
-                <div className="glass-effect rounded-lg p-4 mb-4">
-                  <div className="text-sm text-gray-400 mb-1">Tokens</div>
-                  <div className="text-2xl font-bold">{plan.tokens}</div>
-                  {plan.bonus > 0 && (
-                    <div className="text-green-400 text-sm mt-1">
-                      +{plan.bonus} Bonus
-                    </div>
-                  )}
-                  <div className="text-lg font-semibold mt-2 text-blue-400">
-                    Total: {plan.total} Tokens
-                  </div>
-                </div>
-              </div>
-
-              <ul className="space-y-3 mb-6">
-                {plan.features.map((feature, fIdx) => (
-                  <li key={fIdx} className="flex items-start space-x-2">
-                    <FiCheck className="text-green-400 mt-1 flex-shrink-0" />
-                    <span className="text-sm text-gray-300">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
+ 
+          {/* Trial Toggle */}
+          <div className="flex justify-center mb-12">
+            <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-1.5 inline-flex shadow-2xl">
+              <div
+                className={`absolute top-1.5 h-[calc(100%-12px)] bg-white rounded-xl transition-all duration-300 ${
+                  showTrial ? 'left-1.5 w-[calc(50%-6px)]' : 'left-[calc(50%+3px)] w-[calc(50%-6px)]'
+                }`}
+              ></div>
               <button
-                onClick={() => handleSelectPlan(plan)}
-                className={`w-full py-3 rounded-lg font-semibold transition-all ${
-                  plan.popular
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700'
-                    : 'glass-effect hover:bg-white/10'
+                onClick={() => setShowTrial(true)}
+                className={`relative z-10 px-8 py-3 rounded-xl transition-all font-medium ${
+                  showTrial ? 'text-black' : 'text-gray-400 hover:text-white'
                 }`}
               >
-                Select Plan
+                With 7-Day Trial
               </button>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Token Costs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="glass-effect rounded-2xl p-8 mb-12"
-        >
-          <h2 className="text-2xl font-bold mb-6 text-center">Token Cost Per Analysis</h2>
-          <div className="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto">
-            {tokenCosts.map((cost, idx) => (
-              <div key={idx} className="glass-effect rounded-xl p-4 text-center">
-                <div className="text-sm text-gray-400 mb-1">{cost.type}</div>
-                <div className="text-2xl font-bold text-blue-400">{cost.tokens} Tokens</div>
+              <button
+                onClick={() => setShowTrial(false)}
+                className={`relative z-10 px-8 py-3 rounded-xl transition-all font-medium ${
+                  !showTrial ? 'text-black' : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                No Trial
+              </button>
+            </div>
+          </div>
+ 
+          {/* Plans Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            {plans.map((plan, idx) => (
+              <div
+                key={plan.id}
+                className={`group relative bg-white/[0.02] backdrop-blur-xl border rounded-3xl p-8 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:bg-white/[0.04] ${
+                  plan.popular
+                    ? 'border-white/20 shadow-xl'
+                    : 'border-white/10'
+                }`}
+                style={{ animationDelay: `${idx * 100}ms` }}
+              >
+                {/* Badges */}
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <div className="flex items-center gap-2 bg-white text-black px-5 py-2 rounded-full shadow-lg">
+                      <Star className="w-4 h-4" />
+                      <span className="text-sm font-bold">{plan.badge}</span>
+                    </div>
+                  </div>
+                )}
+                {plan.badge && !plan.popular && (
+                  <div className="absolute -top-4 right-6">
+                    <div className="bg-white text-black px-4 py-2 rounded-full shadow-lg">
+                      <span className="text-xs font-bold">{plan.badge}</span>
+                    </div>
+                  </div>
+                )}
+ 
+                {/* Plan Content */}
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold mb-4 group-hover:text-white transition-colors">
+                    {plan.name}
+                  </h3>
+                  <div className="mb-6">
+                    <div className="flex items-baseline justify-center gap-1">
+                      <span className="text-5xl font-black text-white">
+                        {plan.currency}{plan.price}
+                      </span>
+                      <span className="text-gray-500 text-lg font-medium">/month</span>
+                    </div>
+                  </div>
+ 
+                  {/* Token Box */}
+                  <div className="relative bg-white/[0.03] border border-white/10 rounded-2xl p-6 mb-6 overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
+                    <div className="relative">
+                      <div className="text-sm text-gray-400 mb-2 font-medium">Tokens</div>
+                      <div className="text-4xl font-black text-white mb-2">{plan.tokens}</div>
+                      {plan.bonus > 0 && (
+                        <div className="inline-flex items-center gap-1 bg-white/10 text-white text-sm font-bold px-3 py-1 rounded-full mb-3">
+                          <Zap className="w-3 h-3" />
+                          +{plan.bonus} Bonus
+                        </div>
+                      )}
+                      <div className="text-xl font-bold text-white mt-3">
+                        Total: {plan.total} Tokens
+                      </div>
+                    </div>
+                  </div>
+                </div>
+ 
+                {/* Features */}
+                <ul className="space-y-4 mb-8">
+                  {plan.features.map((feature, fIdx) => (
+                    <li key={fIdx} className="flex items-start gap-3">
+                      <div className="mt-0.5 bg-white/10 rounded-full p-1">
+                        <Check className="text-white w-4 h-4" />
+                      </div>
+                      <span className="text-gray-300 text-sm leading-relaxed">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+ 
+                {/* Select Button */}
+                <button
+                  onClick={() => handleSelectPlan(plan)}
+                  className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
+                    plan.popular
+                      ? 'bg-white text-black hover:bg-gray-200 shadow-lg'
+                      : 'bg-white/5 hover:bg-white/10 border border-white/10'
+                  }`}
+                >
+                  Select Plan
+                </button>
               </div>
             ))}
           </div>
-        </motion.div>
-
-        {/* Payment Modal */}
-        {selectedPlan && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            onClick={() => {
-              setSelectedPlan(null)
-              setPaymentMethod(null)
-            }}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              onClick={(e) => e.stopPropagation()}
-              className="glass-effect rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-            >
-              <h2 className="text-3xl font-bold mb-2">{selectedPlan.name}</h2>
-              <p className="text-gray-400 mb-6">
-                {selectedPlan.currency}{selectedPlan.price}/month • {selectedPlan.total} Tokens
-              </p>
-
-              {!paymentMethod ? (
-                <div>
-                  <h3 className="text-xl font-semibold mb-4">Choose Payment Method</h3>
-                  <div className="grid md:grid-cols-3 gap-4">
-                    <button
-                      onClick={() => setPaymentMethod('stripe')}
-                      className="glass-effect rounded-xl p-6 hover:bg-white/10 transition-all text-left"
-                    >
-                      <div className="text-2xl mb-2">💳</div>
-                      <div className="font-semibold">Card Payment</div>
-                      <div className="text-sm text-gray-400">Stripe</div>
-                    </button>
-                    <button
-                      onClick={() => setPaymentMethod('razorpay')}
-                      className="glass-effect rounded-xl p-6 hover:bg-white/10 transition-all text-left"
-                    >
-                      <div className="text-2xl mb-2">📱</div>
-                      <div className="font-semibold">UPI Payment</div>
-                      <div className="text-sm text-gray-400">Razorpay (India)</div>
-                    </button>
-                    <button
-                      onClick={() => setPaymentMethod('crypto')}
-                      className="glass-effect rounded-xl p-6 hover:bg-white/10 transition-all text-left"
-                    >
-                      <div className="text-2xl mb-2">₿</div>
-                      <div className="font-semibold">Crypto Payment</div>
-                      <div className="text-sm text-gray-400">Coinbase/NOWPayments</div>
-                    </button>
+ 
+          {/* Token Costs */}
+          <div className="bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-3xl p-10 shadow-2xl">
+            <h2 className="text-3xl font-bold mb-8 text-center text-white">
+              Token Cost Per Analysis
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              {tokenCosts.map((cost, idx) => (
+                <div
+                  key={idx}
+                  className="relative group bg-white/[0.03] border border-white/10 rounded-2xl p-8 text-center overflow-hidden hover:scale-105 transition-all duration-300 hover:bg-white/[0.05]"
+                >
+                  <div className="absolute inset-0 bg-white/[0.02] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="relative">
+                    <div className="text-gray-400 mb-3 font-medium">{cost.type}</div>
+                    <div className="text-4xl font-black text-white">
+                      {cost.tokens} Tokens
+                    </div>
                   </div>
                 </div>
-              ) : (
-                <div>
-                  <button
-                    onClick={() => setPaymentMethod(null)}
-                    className="text-gray-400 hover:text-white mb-4 flex items-center space-x-2"
-                  >
-                    <span>←</span>
-                    <span>Back to payment methods</span>
-                  </button>
-                  {paymentMethod === 'stripe' && (
-                    <StripePayment
-                      plan={selectedPlan}
-                      trial={showTrial}
-                      onSuccess={handlePaymentSuccess}
-                      onCancel={() => setPaymentMethod(null)}
-                    />
-                  )}
-                  {paymentMethod === 'razorpay' && (
-                    <RazorpayPayment
-                      plan={selectedPlan}
-                      trial={showTrial}
-                      onSuccess={handlePaymentSuccess}
-                      onCancel={() => setPaymentMethod(null)}
-                    />
-                  )}
-                  {paymentMethod === 'crypto' && (
-                    <CryptoPayment
-                      plan={selectedPlan}
-                      trial={showTrial}
-                      onSuccess={handlePaymentSuccess}
-                      onCancel={() => setPaymentMethod(null)}
-                    />
-                  )}
-                </div>
-              )}
-            </motion.div>
-          </motion.div>
-        )}
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
+ 
+      {/* Payment Modal */}
+      {selectedPlan && (
+        <div
+          className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-fade-in"
+          onClick={() => {
+            setSelectedPlan(null)
+            setPaymentMethod(null)
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative bg-black border border-white/10 rounded-3xl p-10 max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl animate-scale-in"
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => {
+                setSelectedPlan(null)
+                setPaymentMethod(null)
+              }}
+              className="absolute top-6 right-6 bg-white/5 hover:bg-white/10 rounded-full p-2 transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+ 
+            <h2 className="text-4xl font-bold mb-2">{selectedPlan.name}</h2>
+            <p className="text-gray-400 text-lg mb-8">
+              {selectedPlan.currency}{selectedPlan.price}/month • {selectedPlan.total} Tokens
+            </p>
+ 
+            {!paymentMethod ? (
+              <div>
+                <h3 className="text-2xl font-bold mb-6">Choose Payment Method</h3>
+                <div className="grid md:grid-cols-3 gap-4">
+                  <button
+                    onClick={() => setPaymentMethod('stripe')}
+                    className="group bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:bg-white/[0.05] hover:border-white/20 transition-all text-left"
+                  >
+                    <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">💳</div>
+                    <div className="font-bold text-lg mb-1">Card Payment</div>
+                    <div className="text-sm text-gray-400">Stripe</div>
+                  </button>
+                  <button
+                    onClick={() => setPaymentMethod('razorpay')}
+                    className="group bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:bg-white/[0.05] hover:border-white/20 transition-all text-left"
+                  >
+                    <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">📱</div>
+                    <div className="font-bold text-lg mb-1">UPI Payment</div>
+                    <div className="text-sm text-gray-400">Razorpay (India)</div>
+                  </button>
+                  <button
+                    onClick={() => setPaymentMethod('crypto')}
+                    className="group bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:bg-white/[0.05] hover:border-white/20 transition-all text-left"
+                  >
+                    <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">₿</div>
+                    <div className="font-bold text-lg mb-1">Crypto Payment</div>
+                    <div className="text-sm text-gray-400">Coinbase/NOWPayments</div>
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <button
+                  onClick={() => setPaymentMethod(null)}
+                  className="text-gray-400 hover:text-white mb-6 flex items-center gap-2 font-medium"
+                >
+                  <span>←</span>
+                  <span>Back to payment methods</span>
+                </button>
+                <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8">
+                  <p className="text-center text-gray-400">
+                    Payment processing for <span className="text-white font-bold">{paymentMethod}</span> would be integrated here
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+ 
+      <style jsx>{`
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+ 
+        @keyframes scale-in {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+ 
+        .animate-fade-in {
+          animation: fade-in 0.6s ease-out;
+        }
+ 
+        .animate-scale-in {
+          animation: scale-in 0.4s ease-out;
+        }
+      `}</style>
     </div>
   )
 }
-
+ 
