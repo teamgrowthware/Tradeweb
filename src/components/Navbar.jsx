@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import { useAuth } from '../context/AuthContext'
 import { FiMenu, FiX } from 'react-icons/fi'
 import { useState } from 'react'
+import Logo from '../assets/Aitrade.png'
+
 
 export default function Navbar() {
   const { currentUser, logout } = useAuth()
@@ -35,15 +37,31 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
+          {/* <Link to="/" className="flex items-center space-x-2 group"> */}
+          <Link to="/" className="flex items-center space-x-2 group ml-10">
+
             <div className="relative">
               <div className="absolute inset-0 bg-blue-500/20 blur-xl group-hover:bg-blue-500/30 transition-colors"></div>
-              <div className="relative w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform">
-                <span className="text-white font-bold text-xl">T</span>
+              <div className="flex items-center justify-center transform group-hover:scale-110 transition-transform">
+
+  <img 
+                  src={Logo}   
+                  alt="Tradorr Logo"
+                   className="w-[72px] h-[72px] object-contain" 
+                />
+
+
               </div>
             </div>
-            <span className="text-xl md:text-2xl font-bold gradient-text">Tradorr</span>
+            
+               {/* <span className="text-xl md:text-2xl font-bold text-white">Tradorr</span> */}
           </Link>
+
+
+
+
+
+
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
