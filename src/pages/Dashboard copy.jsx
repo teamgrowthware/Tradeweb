@@ -27,7 +27,7 @@ export default function Dashboard() {
           className="mb-8"
         >
           <h1 className="text-4xl font-bold mb-2">
-            Welcome back, {currentUser?.email?.split('@')[0]}! 👋
+            Welcome back, {currentUser?.email?.split('@')[0]}! 
           </h1>
           <p className="text-gray-400">Manage your trading account and access your tools</p>
         </motion.div>

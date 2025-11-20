@@ -6,10 +6,11 @@ import CoreFeature from './Component/CoreFeature'
 import FAQ from './Component/FAQ'
 import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
+import { LineChart, Users, Gift, Palette } from "lucide-react";
+
 
 /* ---------- Floating particles ---------- */
 const FloatingParticles = () => {
-  // limit usage of window during SSR - guard if window not available
   const width = typeof window !== 'undefined' ? window.innerWidth : 1200
   const height = typeof window !== 'undefined' ? window.innerHeight : 800
 
@@ -41,7 +42,7 @@ const FloatingParticles = () => {
   )
 }
 
-/* ---------- Demo section (kept as separate component) ---------- */
+/* ---------- Demo section ---------- */
 const DemoSection = () => (
   <section className="py-2 px-4 relative overflow-hidden">
     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent" />
@@ -68,7 +69,7 @@ const DemoSection = () => (
           className="px-10 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-semibold text-lg shadow-lg shadow-blue-500/50 hover:shadow-blue-500/70 transition-all mb-4"
         >
           <Link to={"/chartAnalyis"}>
-          Launch Free Demo
+            Launch Free Demo
           </Link>
         </motion.button>
       </motion.div>
@@ -99,11 +100,10 @@ export default function Home() {
     }
   ]
 
-
   return (
     <div className="bg-black text-white min-h-screen overflow-x-hidden relative">
-      <Navbar/>
-      {/* Inline styles kept (fonts + helper classes) */}
+      <Navbar />
+
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         * { font-family: 'Inter', sans-serif; }
@@ -126,7 +126,6 @@ export default function Home() {
       {/* ---------- HERO ---------- */}
       <section className="relative flex items-center justify-center px-4 pb-4 pt-20 md:pt-40 overflow-hidden">
         <div className="absolute inset-0 mesh-gradient" />
-
         <div
           className="absolute inset-0 opacity-20"
           style={{
@@ -151,7 +150,7 @@ export default function Home() {
         <motion.div style={{ opacity, scale }} className="relative z-10 max-w-6xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="mb-6">
             <span className="px-6 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-full text-sm font-medium">
-              ✨ Next Generation Trading Platform
+               Next Generation Trading Platform
             </span>
           </motion.div>
 
@@ -161,8 +160,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-3xl md:text-5xl font-black mb-4 leading-tight"
           >
-            The Future of 
-            {/* <br /> */}
+            The Future of{' '}
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
               Advanced Trading
             </span>
@@ -178,9 +176,6 @@ export default function Home() {
                 Get Started
               </motion.button>
             </Link>
-            {/* <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-10 py-2 glass-effect rounded-full font-bold text-lg hover:bg-white/10 transition-all">
-              Watch Demo
-            </motion.button> */}
           </motion.div>
         </motion.div>
       </section>
@@ -200,7 +195,7 @@ export default function Home() {
                     <h2 className="text-3xl md:text-5xl font-black mb-2 leading-tight">
                       Welcome to{' '}
                       <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">TRADORR!</span>{' '}
-                      👋
+                      
                     </h2>
                     <p className="text-gray-400 text-md mb-8 leading-relaxed">Your personalized trading dashboard. Access all your tools and data in one place.</p>
                     <Link to="/pricing">
@@ -210,15 +205,18 @@ export default function Home() {
                     </Link>
                   </motion.div>
 
+                  {/* ----- UPDATED: Lucide Icons Instead of Emojis ----- */}
                   <div className="grid grid-cols-2 gap-4">
                     {[
-                      { title: 'Trading Terminal', desc: 'Access to all the essential tools.', emoji: '📈' },
-                      { title: 'Community Hub', desc: 'Join discussions & follow top traders.', emoji: '👥' },
-                      { title: 'Rewards Center', desc: 'Claim rewards & participate in challenges.', emoji: '🎁' },
-                      { title: 'Customize UI', desc: 'Choose skins, themes & widgets.', emoji: '🎨' }
+                      { title: 'Trading Terminal', desc: 'Access to all the essential tools.', icon: LineChart },
+                      { title: 'Community Hub', desc: 'Join discussions & follow top traders.', icon: Users },
+                      { title: 'Rewards Center', desc: 'Claim rewards & participate in challenges.', icon: Gift },
+                      { title: 'Customize UI', desc: 'Choose skins, themes & widgets.', icon: Palette }
                     ].map((item, idx) => (
                       <motion.div key={idx} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: idx * 0.1, duration: 0.5 }} whileHover={{ scale: 1.05, y: -5 }} className="glass-effect rounded-2xl p-4 hover:bg-white/10 transition-all cursor-pointer group">
-                        <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">{item.emoji}</div>
+                        
+                        <item.icon className="w-8 h-8 mb-3 text-blue-400 group-hover:scale-110 transition-transform" />
+
                         <h3 className="font-bold mb-2 text-lg">{item.title}</h3>
                         <p className="text-sm text-gray-500">{item.desc}</p>
                       </motion.div>
@@ -226,7 +224,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* right column - a mockup card / image placeholder */}
                 <div className="relative">
                   <div className="w-full h-64 md:h-96 rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-white/5 flex items-center justify-center">
                     <div className="text-center">
@@ -235,6 +232,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
           </motion.div>
@@ -245,10 +243,10 @@ export default function Home() {
       <DemoSection />
 
       {/* ---------- Core Features ---------- */}
-    <CoreFeature/>
+      <CoreFeature />
 
       {/* ---------- Why Choose ---------- */}
-    <WhyChooseUs/>
+      <WhyChooseUs />
 
       {/* ---------- How It Works ---------- */}
       <section id="how-it-works" className="py-12 px-4 relative">
@@ -276,8 +274,8 @@ export default function Home() {
       </section>
 
       {/* ---------- FAQ ---------- */}
-  <FAQ/>
-   <Footer />
+      <FAQ />
+      <Footer />
     </div>
   )
 }
