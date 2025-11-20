@@ -140,7 +140,7 @@ export default function Dashboard() {
             }}
             style={{ backgroundSize: '200% auto' }}
           >
-            Welcome back, {currentUser?.email?.split('@')[0]}! 👋
+            Welcome back, {currentUser?.email?.split('@')[0]}! 
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}

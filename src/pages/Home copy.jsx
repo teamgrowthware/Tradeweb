@@ -155,7 +155,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <h2 className="text-4xl font-bold mb-4">
-                  Welcome to <span className="gradient-text">TRADORR!</span> 👋
+                  Welcome to <span className="gradient-text">TRADORR!</span> 
                 </h2>
                 <p className="text-gray-300 text-lg mb-6">
                   Your personalized trading dashboard. Access all your tools and data in one place.
