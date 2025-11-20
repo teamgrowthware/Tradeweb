@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Check, Zap, Star, X } from 'lucide-react'
- 
+
 const plans = [
   {
     id: 'starter',
@@ -80,27 +80,27 @@ const plans = [
     badge: 'Lifetime'
   }
 ]
- 
+
 const tokenCosts = [
   { type: 'Basic Candlestick', tokens: 2 },
   { type: 'SMC / ICT / Pattern / Indicator', tokens: 5 }
 ]
- 
+
 export default function ModernPricing() {
   const [selectedPlan, setSelectedPlan] = useState(null)
   const [paymentMethod, setPaymentMethod] = useState(null)
   const [showTrial, setShowTrial] = useState(true)
- 
+
   const handleSelectPlan = (plan) => {
     setSelectedPlan(plan)
     setPaymentMethod(null)
   }
- 
+
   const handlePaymentSuccess = () => {
     setSelectedPlan(null)
     setPaymentMethod(null)
   }
- 
+
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Subtle Grid Pattern */}
@@ -108,7 +108,7 @@ export default function ModernPricing() {
         backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
         backgroundSize: '50px 50px'
       }}></div>
- 
+
       <div className="relative pt-20 pb-20 px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -124,7 +124,7 @@ export default function ModernPricing() {
               Select the perfect plan for your trading needs. All plans include monthly subscription with 7-day free trial.
             </p>
           </div>
- 
+
           {/* Trial Toggle */}
           <div className="flex justify-center mb-12">
             <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-1.5 inline-flex shadow-2xl">
@@ -151,7 +151,7 @@ export default function ModernPricing() {
               </button>
             </div>
           </div>
- 
+
           {/* Plans Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {plans.map((plan, idx) => (
@@ -180,7 +180,7 @@ export default function ModernPricing() {
                     </div>
                   </div>
                 )}
- 
+
                 {/* Plan Content */}
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-bold mb-4 group-hover:text-white transition-colors">
@@ -194,7 +194,7 @@ export default function ModernPricing() {
                       <span className="text-gray-500 text-lg font-medium">/month</span>
                     </div>
                   </div>
- 
+
                   {/* Token Box */}
                   <div className="relative bg-white/[0.03] border border-white/10 rounded-2xl p-6 mb-6 overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
@@ -213,7 +213,7 @@ export default function ModernPricing() {
                     </div>
                   </div>
                 </div>
- 
+
                 {/* Features */}
                 <ul className="space-y-4 mb-8">
                   {plan.features.map((feature, fIdx) => (
@@ -225,7 +225,7 @@ export default function ModernPricing() {
                     </li>
                   ))}
                 </ul>
- 
+
                 {/* Select Button */}
                 <button
                   onClick={() => handleSelectPlan(plan)}
@@ -240,7 +240,7 @@ export default function ModernPricing() {
               </div>
             ))}
           </div>
- 
+
           {/* Token Costs */}
           <div className="bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-3xl p-10 shadow-2xl">
             <h2 className="text-3xl font-bold mb-8 text-center text-white">
@@ -265,7 +265,7 @@ export default function ModernPricing() {
           </div>
         </div>
       </div>
- 
+
       {/* Payment Modal */}
       {selectedPlan && (
         <div
@@ -289,12 +289,12 @@ export default function ModernPricing() {
             >
               <X className="w-6 h-6" />
             </button>
- 
+
             <h2 className="text-4xl font-bold mb-2">{selectedPlan.name}</h2>
             <p className="text-gray-400 text-lg mb-8">
               {selectedPlan.currency}{selectedPlan.price}/month • {selectedPlan.total} Tokens
             </p>
- 
+
             {!paymentMethod ? (
               <div>
                 <h3 className="text-2xl font-bold mb-6">Choose Payment Method</h3>
@@ -344,7 +344,7 @@ export default function ModernPricing() {
           </div>
         </div>
       )}
- 
+
       <style jsx>{`
         @keyframes fade-in {
           from {
@@ -356,7 +356,7 @@ export default function ModernPricing() {
             transform: translateY(0);
           }
         }
- 
+
         @keyframes scale-in {
           from {
             opacity: 0;
@@ -367,11 +367,11 @@ export default function ModernPricing() {
             transform: scale(1);
           }
         }
- 
+
         .animate-fade-in {
           animation: fade-in 0.6s ease-out;
         }
- 
+
         .animate-scale-in {
           animation: scale-in 0.4s ease-out;
         }
@@ -379,4 +379,3 @@ export default function ModernPricing() {
     </div>
   )
 }
- 

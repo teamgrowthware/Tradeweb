@@ -178,9 +178,9 @@ export default function Home() {
                 Get Started
               </motion.button>
             </Link>
-            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-10 py-2 glass-effect rounded-full font-bold text-lg hover:bg-white/10 transition-all">
+            {/* <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-10 py-2 glass-effect rounded-full font-bold text-lg hover:bg-white/10 transition-all">
               Watch Demo
-            </motion.button>
+            </motion.button> */}
           </motion.div>
         </motion.div>
       </section>
