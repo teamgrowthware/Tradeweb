@@ -41,9 +41,15 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route
-                path="/termandcondition"
-                element={<TermsAndConditions />}
+              <Route path="/termandcondition" element={<TermsAndConditions/>}/>
+              <Route path = "/privacyandpolicy" element={<PrivacyPolicy/>}/>
+              <Route 
+                path="/dashboard" 
+                element={
+                  // <ProtectedRoute>
+                    <Dashboard />
+                  // </ProtectedRoute>
+                } 
               />
               <Route path="/privacyandpolicy" element={<PrivacyPolicy />} />
               <Route path="/dashboard" element={<Dashboard />} />
