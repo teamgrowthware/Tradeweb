@@ -1,41 +1,42 @@
 import React, { useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { ChartColumnBig,Palette,Bot,Gamepad2,Sparkles,Lock } from "lucide-react"
 export default function CoreFeature() {
  
   const features = [
     {
-      icon: '📊',
+      icon: <ChartColumnBig size={40} color="white" />,
       title: 'Advanced Trading Terminal',
       description: 'Real-time charts, multi-exchange support & smart order execution.',
       gradient: 'from-blue-500 to-cyan-500'
     },
     {
-      icon: '🎨',
+      icon: <Palette size={40} color="white" />,
       title: 'Customizable Widgets',
       description: 'Drag & drop your favourite tools, from social feeds to analytical feeds.',
       gradient: 'from-purple-500 to-pink-500'
     },
     {
-      icon: '🤖',
+      icon: <Bot size={40} color="white" />,
       title: 'AI-Powered Analytics',
       description: 'Make informed decisions with powerful insights.',
       gradient: 'from-green-500 to-emerald-500'
     },
     {
-      icon: '🎮',
+      icon: <Gamepad2 size={40} color="white" />,
       title: 'Gamified Trading',
       description: 'Earn rewards, climb leaderboards & unlock exclusive perks.',
       gradient: 'from-yellow-500 to-orange-500'
     },
     {
-      icon: '✨',
+      icon: <Sparkles size={32} color="gold" />,
       title: 'Personalized Skins',
       description: 'Trade with style using custom skins & themes.',
       gradient: 'from-pink-500 to-rose-500'
     },
     {
-      icon: '🔒',
+      icon: <Lock size={72} color="#2931a3" />,
       title: 'Secure & Fast Transactions',
       description: 'Bank-level security with instant deposits & withdrawals.',
       gradient: 'from-indigo-500 to-blue-500'

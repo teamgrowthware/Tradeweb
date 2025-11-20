@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import WhyChooseUs from './Component/WhyChosseUs'
 import CoreFeature from './Component/CoreFeature'
 import FAQ from './Component/FAQ'
+import Footer from '../../components/Footer'
+import Navbar from '../../components/Navbar'
 
 /* ---------- Floating particles ---------- */
 const FloatingParticles = () => {
@@ -65,7 +67,9 @@ const DemoSection = () => (
           whileTap={{ scale: 0.95 }}
           className="px-10 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-semibold text-lg shadow-lg shadow-blue-500/50 hover:shadow-blue-500/70 transition-all mb-4"
         >
+          <Link to={"/chartAnalyis"}>
           Launch Free Demo
+          </Link>
         </motion.button>
       </motion.div>
     </div>
@@ -98,6 +102,7 @@ export default function Home() {
 
   return (
     <div className="bg-black text-white min-h-screen overflow-x-hidden relative">
+      <Navbar/>
       {/* Inline styles kept (fonts + helper classes) */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
@@ -173,9 +178,9 @@ export default function Home() {
                 Get Started
               </motion.button>
             </Link>
-            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-10 py-2 glass-effect rounded-full font-bold text-lg hover:bg-white/10 transition-all">
+            {/* <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-10 py-2 glass-effect rounded-full font-bold text-lg hover:bg-white/10 transition-all">
               Watch Demo
-            </motion.button>
+            </motion.button> */}
           </motion.div>
         </motion.div>
       </section>
@@ -199,7 +204,7 @@ export default function Home() {
                     </h2>
                     <p className="text-gray-400 text-md mb-8 leading-relaxed">Your personalized trading dashboard. Access all your tools and data in one place.</p>
                     <Link to="/pricing">
-                      <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-bold shadow-lg shadow-blue-500/50">
+                      <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-8 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-bold shadow-lg shadow-blue-500/50">
                         Get Started →
                       </motion.button>
                     </Link>
@@ -212,7 +217,7 @@ export default function Home() {
                       { title: 'Rewards Center', desc: 'Claim rewards & participate in challenges.', emoji: '🎁' },
                       { title: 'Customize UI', desc: 'Choose skins, themes & widgets.', emoji: '🎨' }
                     ].map((item, idx) => (
-                      <motion.div key={idx} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: idx * 0.1, duration: 0.5 }} whileHover={{ scale: 1.05, y: -5 }} className="glass-effect rounded-2xl p-6 hover:bg-white/10 transition-all cursor-pointer group">
+                      <motion.div key={idx} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: idx * 0.1, duration: 0.5 }} whileHover={{ scale: 1.05, y: -5 }} className="glass-effect rounded-2xl p-4 hover:bg-white/10 transition-all cursor-pointer group">
                         <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">{item.emoji}</div>
                         <h3 className="font-bold mb-2 text-lg">{item.title}</h3>
                         <p className="text-sm text-gray-500">{item.desc}</p>
@@ -258,11 +263,11 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8 mb-4">
             {steps.map((step, idx) => (
               <motion.div key={idx} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.2, duration: 0.6 }} whileHover={{ y: -10 }} className="glass-effect rounded-2xl p-10 text-center relative group">
-                <motion.div whileHover={{ scale: 1.1, rotate: 360 }} transition={{ duration: 0.6 }} className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-3xl font-black mb-6 mx-auto shadow-xl group-hover:shadow-blue-500/50">
+                <motion.div whileHover={{ scale: 1.1, rotate: 360 }} transition={{ duration: 0.6 }} className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-2xl font-black mb-6 mx-auto shadow-xl group-hover:shadow-blue-500/50">
                   {step.number}
                 </motion.div>
-                <h3 className="text-3xl font-black mb-4">{step.title}</h3>
-                <p className="text-gray-400 text-lg leading-relaxed">{step.description}</p>
+                <h3 className="text-2xl font-black mb-4">{step.title}</h3>
+                <p className="text-gray-400 text-md leading-relaxed">{step.description}</p>
                 {idx < steps.length - 1 && <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-blue-500 to-transparent" />}
               </motion.div>
             ))}
@@ -272,64 +277,7 @@ export default function Home() {
 
       {/* ---------- FAQ ---------- */}
   <FAQ/>
-
-      {/* ---------- Final CTA ---------- */}
-      <section className="py-12 px-4 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-0 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl" />
-          <motion.div animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }} transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }} className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl" />
-        </div>
-
-        <div className="max-w-5xl mx-auto text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="glass-effect rounded-3xl p-16 relative overflow-hidden">
-            <motion.div className="absolute inset-0" animate={{ background: ['radial-gradient(circle at 0% 0%, rgba(59,130,246,0.1) 0%, transparent 50%)', 'radial-gradient(circle at 100% 100%, rgba(168,85,247,0.1) 0%, transparent 50%)'] }} transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }} />
-
-            <div className="relative z-10">
-              <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-5xl md:text-7xl font-black mb-6">
-                Ready to Trade{' '}
-                <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">Smarter?</span>
-              </motion.h2>
-
-              <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }} className="text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-                Sign up today & get early access to exclusive trading features, skins, and rewards.
-              </motion.p>
-
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.6 }}>
-                <Link to="/pricing">
-                  <motion.button whileHover={{ scale: 1.05, boxShadow: '0 0 50px rgba(59, 130, 246, 0.7)' }} whileTap={{ scale: 0.95 }} className="px-12 py-5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-black text-xl shadow-2xl shadow-blue-500/50 hover:shadow-blue-500/70 transition-all">
-                    Start Trading For Free
-                  </motion.button>
-                </Link>
-              </motion.div>
-
-              {/* Trust badges */}
-              <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.8 }} className="mt-16 flex flex-wrap justify-center gap-8 text-sm text-gray-500">
-                <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>No credit card required</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>Free demo access</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>Cancel anytime</span>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Footer spacer */}
-      <div className="h-20" />
+   <Footer />
     </div>
   )
 }
