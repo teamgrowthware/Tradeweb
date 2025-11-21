@@ -6,24 +6,24 @@ export default function FAQ() {
  
   const faqs = [
     {
-      question: 'What is Tradorr?',
+      question: 'What is AI Trade Analyzer?',
       answer:
-        "Tradorr is an all-in-one advanced trading platform that offers real-time charts, AI-powered analytics, customizable widgets, and gamified trading features. It's designed for traders of all levels who want a comprehensive trading solution in one place."
+        "AI Trade Analyzer is an all-in-one advanced trading platform that offers real-time charts, AI-powered analytics, customizable widgets, and gamified trading features. It's designed for traders of all levels who want a comprehensive trading solution in one place."
     },
     {
-      question: "How does Tradorr's widget system work?",
+      question: "How does AI Trade Analyzer's widget system work?",
       answer:
-        "Tradorr's widget system allows you to drag and drop various trading tools and feeds onto your dashboard. You can customize your workspace with social feeds, analytical tools, charts, and more, all arranged exactly how you want them."
+        "AI Trade Analyzer's widget system allows you to drag and drop various trading tools and feeds onto your dashboard. You can customize your workspace with social feeds, analytical tools, charts, and more, all arranged exactly how you want them."
     },
     {
       question: 'Can I earn rewards while trading?',
       answer:
-        'Yes! Tradorr features a gamified trading system where you can earn rewards, climb leaderboards, and unlock exclusive perks based on your trading activity and achievements.'
+        'Yes! AI Trade Analyzer features a gamified trading system where you can earn rewards, climb leaderboards, and unlock exclusive perks based on your trading activity and achievements.'
     },
     {
-      question: 'Is Tradorr secure?',
+      question: 'Is AI Trade Analyzer secure?',
       answer:
-        'Absolutely. Tradorr uses bank-level security measures to protect your data and transactions. We implement industry-standard encryption and security protocols to ensure your information is safe.'
+        'Absolutely. AI Trade Analyzer uses bank-level security measures to protect your data and transactions. We implement industry-standard encryption and security protocols to ensure your information is safe.'
     },
     {
       question: 'How do I get started?',

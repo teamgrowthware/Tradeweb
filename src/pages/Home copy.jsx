@@ -81,20 +81,20 @@ export default function Home() {
 
   const faqs = [
     {
-      question: 'What is Tradorr?',
-      answer: 'Tradorr is an all-in-one advanced trading platform that offers real-time charts, AI-powered analytics, customizable widgets, and gamified trading features. It\'s designed for traders of all levels who want a comprehensive trading solution in one place.'
+      question: 'What is AI Trade Analyzer?',
+      answer: 'AI Trade Analyzer is an all-in-one advanced trading platform that offers real-time charts, AI-powered analytics, customizable widgets, and gamified trading features. It\'s designed for traders of all levels who want a comprehensive trading solution in one place.'
     },
     {
-      question: 'How does Tradorr\'s widget system work?',
-      answer: 'Tradorr\'s widget system allows you to drag and drop various trading tools and feeds onto your dashboard. You can customize your workspace with social feeds, analytical tools, charts, and more, all arranged exactly how you want them.'
+      question: 'How does AI Trade Analyzer\'s widget system work?',
+      answer: 'AI Trade Analyzer\'s widget system allows you to drag and drop various trading tools and feeds onto your dashboard. You can customize your workspace with social feeds, analytical tools, charts, and more, all arranged exactly how you want them.'
     },
     {
       question: 'Can I earn rewards while trading?',
-      answer: 'Yes! Tradorr features a gamified trading system where you can earn rewards, climb leaderboards, and unlock exclusive perks based on your trading activity and achievements.'
+      answer: 'Yes! AI Trade Analyzer features a gamified trading system where you can earn rewards, climb leaderboards, and unlock exclusive perks based on your trading activity and achievements.'
     },
     {
-      question: 'Is Tradorr secure?',
-      answer: 'Absolutely. Tradorr uses bank-level security measures to protect your data and transactions. We implement industry-standard encryption and security protocols to ensure your information is safe.'
+      question: 'Is AI Trade Analyzer secure?',
+      answer: 'Absolutely. AI Trade Analyzer uses bank-level security measures to protect your data and transactions. We implement industry-standard encryption and security protocols to ensure your information is safe.'
     },
     {
       question: 'How do I get started?',
@@ -155,17 +155,26 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <h2 className="text-4xl font-bold mb-4">
-                  Welcome to <span className="gradient-text">TRADORR!</span> 
+                  Welcome to <span className="gradient-text">AI Trade Analyzer!</span> 
                 </h2>
                 <p className="text-gray-300 text-lg mb-6">
                   Your personalized trading dashboard. Access all your tools and data in one place.
                 </p>
-                <Link
+
+                {/* <Link
                   to="/pricing"
                   className="inline-block px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all"
                 >
                   Get Started
-                </Link>
+                </Link> */}
+                
+
+                <Link
+          to="/login"
+          className="text-gray-300 hover:text-white text-sm font-medium"
+        >
+           Get Started
+        </Link>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 {[
@@ -227,7 +236,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose Tradorr */}
+      {/* Why Choose AI Trade Analyzer */}
       <section id="why-choose" className="py-20 px-4 bg-dark-800/50">
         <div className="max-w-7xl mx-auto">
           <motion.h2
@@ -236,7 +245,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold text-center mb-8"
           >
-            Why Choose Tradorr?
+            Why Choose AI Trade Analyzer?
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -244,7 +253,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center text-gray-300 mb-12 max-w-3xl mx-auto"
           >
-            Tradorr offers secure, hassle-free trading with the best rates and instant processing.
+            AI Trade Analyzer offers secure, hassle-free trading with the best rates and instant processing.
           </motion.p>
           <div className="grid md:grid-cols-3 gap-8">
             {whyChoose.map((item, idx) => (
@@ -307,7 +316,7 @@ export default function Home() {
             className="text-center mt-12"
           >
             <p className="text-2xl font-bold mb-6">
-              Join the Future of Trading - Be a Tradorr Today!
+              Join the Future of Trading - Be a AI Trade Analyzer Today!
             </p>
             <Link
               to="/pricing"

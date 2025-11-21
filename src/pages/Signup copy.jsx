@@ -70,7 +70,7 @@ export default function Signup() {
         <div className="glass-effect rounded-2xl p-8">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold mb-2">Create Account</h1>
-            <p className="text-gray-400">Join Tradorr and start trading smarter</p>
+            <p className="text-gray-400">Join AI Trade Analyzer and start trading smarter</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">

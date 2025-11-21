@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { ImageUploader } from './Component/ImageUploader';
 import { AnalysisDisplay } from './Component/AnalysisDisplay';
 import { analyzeChart } from '../../services/geminiService';
@@ -25,10 +25,23 @@ const MainChartAnalysis = () => {
     };
     reader.readAsDataURL(file);
   };
+  useEffect(()=>{getdata()})
+  const [tokens,setTokens]=useState()
+  const getdata=()=>{
+    const data=localStorage.getItem("tokens")
+    setTokens(data)
+  }
 
   const handleAnalyze = useCallback(async () => {
+      
     if (!image) return;
+      if (tokens > 0) {
+      const newTokens = tokens - 1;
+      setTokens(newTokens);
+      localStorage.setItem("tokens", newTokens);
+      window.dispatchEvent(new Event("tokensUpdated"));
 
+    }
     setIsLoading(true);
     setError(null);
     setAnalysis(null);

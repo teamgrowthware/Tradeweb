@@ -83,7 +83,7 @@ export default function Signup() {
               transition={{ delay: 0.2 }}
               className="text-gray-500 text-sm"
             >
-              Join Tradorr and start trading smarter
+              Join AI Trade Analyzer and start trading smarter
             </motion.p>
           </div>
 

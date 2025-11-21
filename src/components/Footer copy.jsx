@@ -61,7 +61,7 @@ export default function Footer() {
                 Features
               </a>
               <a href="#why-choose" className="text-gray-400 hover:text-white transition-colors text-sm">
-                Why Choose Tradorr?
+                Why Choose Trade?
               </a>
               <a href="#how-it-works" className="text-gray-400 hover:text-white transition-colors text-sm">
                 How it works
@@ -74,7 +74,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 pt-8 border-t border-white/10 text-center text-gray-400 text-sm">
-          <p>© {currentYear} Tradorr.com | hello@tradorr.com</p>
+          <p>© {currentYear} AI Trade Analyzer.com | hello@tradorr.com</p>
         </div>
       </div>
     </footer>

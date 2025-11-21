@@ -71,7 +71,7 @@ export default function Footer() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          {['Home', 'Features', 'Why Choose Tradorr?', 'How it works', 'FAQ'].map((link, idx) => (
+          {['Home', 'Features', 'Why Choose Trade?', 'How it works', 'FAQ'].map((link, idx) => (
             <motion.a
               key={idx}
               href={`#${link.toLowerCase().replace(/\s+/g, '-').replace('?', '')}`}

@@ -54,25 +54,7 @@ const DemoSection = () => (
         transition={{ duration: 0.8 }}
         className="text-center"
       >
-        <h2 className="text-3xl md:text-5xl font-bold mb-4">
-          Experience{' '}
-          <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
-            Live Trading
-          </span>
-        </h2>
-        <p className="text-md text-gray-400 mb-4 max-w-2xl mx-auto">
-          Try our free demo and explore all features without any commitment
-        </p>
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="px-10 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-semibold text-lg shadow-lg shadow-blue-500/50 hover:shadow-blue-500/70 transition-all mb-4"
-        >
-          <Link to={"/chartAnalyis"}>
-            Launch Free Demo
-          </Link>
-        </motion.button>
-      </motion.div>
+     </motion.div>
     </div>
   </section>
 )
@@ -171,10 +153,24 @@ export default function Home() {
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }} className="flex flex-wrap gap-4 justify-center">
-            <Link to="/pricing">
-              <motion.button whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(59, 130, 246, 0.5)' }} whileTap={{ scale: 0.95 }} className="px-10 py-2 bg-white text-black rounded-full font-bold text-lg shadow-xl hover:bg-gray-100 transition-all">
+            {/* <Link to="/pricing"> */}
+<Link to="/login">
+              {/* <motion.button whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(59, 130, 246, 0.5)' }} whileTap={{ scale: 0.95 }} className="px-10 py-2 bg-white text-black rounded-full font-bold text-lg shadow-xl hover:bg-gray-100 transition-all">
                 Get Started
-              </motion.button>
+              </motion.button> */}
+
+              
+           <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-10 py-2 bg-purple-700 text-white rounded-full font-bold text-lg shadow-xl hover:bg-gray-100 transition-all"
+            >
+              {/* <Link to={"/chartAnalyis"}> */}
+              <Link to="/login">
+            Live Demo
+          </Link>
+            </motion.button>
+
             </Link>
           </motion.div>
         </motion.div>
@@ -194,11 +190,12 @@ export default function Home() {
                   <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} className="mb-8">
                     <h2 className="text-3xl md:text-5xl font-black mb-2 leading-tight">
                       Welcome to{' '}
-                      <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">TRADORR!</span>{' '}
+                      <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">AI Trade Analyzer!</span>{' '}
                       
                     </h2>
                     <p className="text-gray-400 text-md mb-8 leading-relaxed">Your personalized trading dashboard. Access all your tools and data in one place.</p>
-                    <Link to="/pricing">
+                    {/* <Link to="/pricing"> */}
+                      <Link to="/login">
                       <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-8 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-bold shadow-lg shadow-blue-500/50">
                         Get Started →
                       </motion.button>

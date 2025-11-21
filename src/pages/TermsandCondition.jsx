@@ -37,7 +37,7 @@ export default function TermsAndConditions() {
     {
       icon: AlertCircle,
       title: "5. Limitation of Liability",
-      content: "Tradorr is not liable for any losses incurred from using our service. Trading involves risk, and past performance does not guarantee future results. Use our tools at your own discretion."
+      content: "AI Trade Analyzer is not liable for any losses incurred from using our service. Trading involves risk, and past performance does not guarantee future results. Use our tools at your own discretion."
     },
     {
       icon: CheckCircle,
@@ -346,7 +346,7 @@ export default function TermsAndConditions() {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.6, duration: 0.6 }}
           >
-            By continuing to use Tradorr, you acknowledge that you have read, understood, and agree to be bound by these Terms & Conditions.
+            By continuing to use AI Trade Analyzer, you acknowledge that you have read, understood, and agree to be bound by these Terms & Conditions.
           </motion.p>
         </motion.div>
 
