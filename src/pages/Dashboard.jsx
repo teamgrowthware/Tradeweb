@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Navbar from '../components/Navbar';
 
 // Mock hooks for demo
 const useAuth = () => ({ currentUser: { email: 'trader@example.com', uid: 'abc123def456ghi789jkl012' } });
@@ -87,6 +88,8 @@ export default function Dashboard() {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 pt-20 pb-20 px-4 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -391,5 +394,6 @@ export default function Dashboard() {
         </motion.div>
       </div>
     </div>
+    </>
   );
 }
