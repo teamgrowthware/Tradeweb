@@ -26,9 +26,9 @@ export default function WhyChooseUs() {
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-center mb-10">
             <h2 className="text-3xl md:text-5xl font-black mb-2">
               Why Choose{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">Tradorr?</span>
+              <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">?</span>
             </h2>
-            <p className="text-md text-gray-400 max-w-3xl mx-auto">Tradorr offers secure, hassle-free trading with the best rates and instant processing.</p>
+            <p className="text-md text-gray-400 max-w-3xl mx-auto">AI Trade Analyzer offers secure, hassle-free trading with the best rates and instant processing.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">

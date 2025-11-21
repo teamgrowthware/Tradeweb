@@ -138,11 +138,12 @@ export default function ImageUploaderDemo() {
   };
 
   const handleAnalyze = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      alert('Analysis complete! (Demo)');
-    }, 2000);
+    console.log("------")
+    // setLoading(true);
+    // setTimeout(() => {
+    //   setLoading(false);
+    //   alert('Analysis complete! (Demo)');
+    // }, 2000);
   };
 
   const handleReset = () => {

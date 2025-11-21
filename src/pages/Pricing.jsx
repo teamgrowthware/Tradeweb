@@ -133,22 +133,22 @@ export default function ModernPricing() {
                   showTrial ? 'left-1.5 w-[calc(50%-6px)]' : 'left-[calc(50%+3px)] w-[calc(50%-6px)]'
                 }`}
               ></div>
-              <button
+              {/* <button
                 onClick={() => setShowTrial(true)}
                 className={`relative z-10 px-8 py-3 rounded-xl transition-all font-medium ${
                   showTrial ? 'text-black' : 'text-gray-400 hover:text-white'
                 }`}
               >
                 With 7-Day Trial
-              </button>
-              <button
+              </button> */}
+              {/* <button
                 onClick={() => setShowTrial(false)}
                 className={`relative z-10 px-8 py-3 rounded-xl transition-all font-medium ${
                   !showTrial ? 'text-black' : 'text-gray-400 hover:text-white'
                 }`}
               >
                 No Trial
-              </button>
+              </button> */}
             </div>
           </div>
 
