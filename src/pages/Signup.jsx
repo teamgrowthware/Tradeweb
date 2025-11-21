@@ -2,9 +2,10 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Lock, Loader, ArrowRight, User } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Signup() {
+  const navigate = useNavigate();
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -33,6 +34,7 @@ export default function Signup() {
     // Simulate API call
     setTimeout(() => {
       alert('Account created successfully!')
+      navigate('/pricing')
       setLoading(false)
     }, 1500)
   }

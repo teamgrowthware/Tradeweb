@@ -229,7 +229,7 @@ export default function ModernPricing() {
                 {/* Select Button */}
                 <button
                   onClick={() => handleSelectPlan(plan)}
-                  className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
+                  className={`w-full py-2 rounded-xl font-bold text-lg transition-all duration-300 ${
                     plan.popular
                       ? 'bg-white text-black hover:bg-gray-200 shadow-lg'
                       : 'bg-white/5 hover:bg-white/10 border border-white/10'
