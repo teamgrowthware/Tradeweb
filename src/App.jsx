@@ -42,7 +42,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/termandcondition" element={<TermsAndConditions/>}/>
-              <Route path = "/privacyandpolicy" element={<PrivacyPolicy/>}/>
+              <Route path="/privacyandpolicy" element={<PrivacyPolicy/>}/>
               <Route 
                 path="/dashboard" 
                 element={
@@ -51,8 +51,6 @@ function App() {
                   // </ProtectedRoute>
                 } 
               />
-              <Route path="/privacyandpolicy" element={<PrivacyPolicy />} />
-              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/chartAnalyis" element={<MainChartAnalysis />} />
               <Route
