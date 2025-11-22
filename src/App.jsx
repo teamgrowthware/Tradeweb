@@ -16,7 +16,7 @@ import Pricing from "./pages/Pricing";
 import Admin from "./pages/Admin";
 import Home from "./pages/Home/Home";
 import TermsAndConditions from "./pages/TermsandCondition";
-import PrivacyPolicy from "./pages/privacyandpolicy";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import MainChartAnalysis from "./pages/ChartAnalyis/MainChartAnalysis";
 
 function ProtectedRoute({ children }) {
