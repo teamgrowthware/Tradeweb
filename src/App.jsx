@@ -16,7 +16,7 @@ import Pricing from "./pages/Pricing";
 import Admin from "./pages/Admin";
 import Home from "./pages/Home/Home";
 import TermsAndConditions from "./pages/TermsandCondition";
-import PrivacyPolicy from "./pages/privacyandpolicy";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import MainChartAnalysis from "./pages/ChartAnalyis/MainChartAnalysis";
 
 function ProtectedRoute({ children }) {
@@ -42,7 +42,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/termandcondition" element={<TermsAndConditions/>}/>
-              <Route path = "/privacyandpolicy" element={<PrivacyPolicy/>}/>
+              <Route path="/privacyandpolicy" element={<PrivacyPolicy/>}/>
               <Route 
                 path="/dashboard" 
                 element={
@@ -51,8 +51,6 @@ function App() {
                   // </ProtectedRoute>
                 } 
               />
-              <Route path="/privacyandpolicy" element={<PrivacyPolicy />} />
-              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/chartAnalyis" element={<MainChartAnalysis />} />
               <Route
